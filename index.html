@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="宋梓晗，哈尔滨工业大学软件工程本科生，关注 AI4SE、知识图谱、GraphRAG、VLA 和软件架构。"
+    />
+    <meta name="theme-color" content="#f6f2e8" />
+    <title>宋梓晗 | Song Zihan</title>
+    <link rel="preconnect" href="https://github.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="返回顶部">Song Zihan</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#projects">项目</a>
+        <a href="#skills">技能</a>
+        <a href="#honors">经历</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <img src="https://github.com/salfranio.png" alt="" />
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">HIT Software Engineering · Class of 2027</p>
+          <h1 id="hero-title">宋梓晗</h1>
+          <p class="lead">
+            关注 AI 工程、知识图谱、GraphRAG、大语言模型应用和软件系统设计。
+            最近在探索 AI for Software Engineering、面向自动驾驶的 VLA 模型迁移，
+            以及中间件 / 云原生架构实践。
+          </p>
+          <div class="hero-actions" aria-label="主要链接">
+            <a class="button primary" href="mailto:18945659789@163.com">联系我</a>
+            <a class="button secondary" href="https://github.com/salfranio">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro" aria-label="个人概览">
+        <div>
+          <span class="label">Research</span>
+          <p>知识图谱、GraphRAG、农业大模型评测、古建筑知识网络。</p>
+        </div>
+        <div>
+          <span class="label">Engineering</span>
+          <p>AI 辅助代码审查、VSCode 插件、中间件实验、Docker 化环境。</p>
+        </div>
+        <div>
+          <span class="label">Foundation</span>
+          <p>数据结构、计算机组成原理、操作系统、计算机网络和软件架构。</p>
+        </div>
+      </section>
+
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="eyebrow">Research & Projects</p>
+          <h2 id="projects-title">研究与项目</h2>
+        </div>
+        <div class="project-list">
+          <article class="project">
+            <div class="project-index">01</div>
+            <div>
+              <h3>基于知识图谱的农业大模型评测方法</h3>
+              <p>
+                基于专家知识和结构化规则设计农业多学科 Schema，清洗处理 3000 万字以上农业语料，
+                构建 GPT-4o 两阶段实体与关系抽取流程，并在 Neo4j 中完成 3,275 个实体节点和
+                13,055 条语义关系的图谱导入与可视化。
+              </p>
+              <ul class="tags">
+                <li>Knowledge Graph</li>
+                <li>GPT-4o</li>
+                <li>Neo4j</li>
+                <li>Schema</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-index">02</div>
+            <div>
+              <h3>OpenVLA4Drive 横向迁移</h3>
+              <p>
+                面向自动驾驶场景适配 OpenVLA 风格架构，探索 BEV 视觉 Backbone、Q-Former 视觉投影、
+                未来轨迹点预测 head、视觉文本空间对齐和 Llama 微调。
+              </p>
+              <ul class="tags">
+                <li>VLA</li>
+                <li>BEV</li>
+                <li>Q-Former</li>
+                <li>Llama</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-index">03</div>
+            <div>
+              <h3>基于 GraphRAG 的古建筑知识网络</h3>
+              <p>
+                设计古建筑历史资料 Schema，构建覆盖 153 栋建筑、671 条关系 / 属性记录的知识网络，
+                结合 Qwen 与 GraphRAG 实现自然语言查询、图谱可视化和图片检索匹配。
+              </p>
+              <ul class="tags">
+                <li>GraphRAG</li>
+                <li>Qwen</li>
+                <li>Vector Search</li>
+                <li>Multimodal</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-index">04</div>
+            <div>
+              <h3>Smart Code Reviewer</h3>
+              <p>
+                一个 TypeScript VSCode 插件，支持审查选中代码、当前文件和 Git diff，
+                调用 OpenAI-compatible Chat Completions API 输出合并建议、问题列表、测试建议和总结。
+              </p>
+              <ul class="tags">
+                <li>AI4SE</li>
+                <li>TypeScript</li>
+                <li>VSCode Extension</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-index">05</div>
+            <div>
+              <h3>计算层与数据层架构实验</h3>
+              <p>
+                使用 Nginx、ShardingSphere-JDBC、MySQL、Redis、Jedis 和 Docker Compose
+                完成负载均衡、分库分表和缓存架构实验。
+              </p>
+              <ul class="tags">
+                <li>Nginx</li>
+                <li>Redis</li>
+                <li>MySQL</li>
+                <li>Docker</li>
+              </ul>
+              <a class="inline-link" href="https://github.com/salfranio/SWStruct-Lab2">查看仓库</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="section split" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <p class="eyebrow">Stack</p>
+          <h2 id="skills-title">技术栈</h2>
+        </div>
+        <div class="skill-grid">
+          <div>
+            <h3>Languages</h3>
+            <p>Python · C/C++ · Java · TypeScript · JavaScript · SQL · LaTeX · MATLAB</p>
+          </div>
+          <div>
+            <h3>AI / ML</h3>
+            <p>PyTorch · TensorFlow · LLM Prompting · Fine-tuning · CLIP · BEVFormer · VLA · GraphRAG</p>
+          </div>
+          <div>
+            <h3>Backend / Systems</h3>
+            <p>Redis · MySQL · ShardingSphere-JDBC · Nginx · Docker · Maven · Neo4j</p>
+          </div>
+          <div>
+            <h3>Tools</h3>
+            <p>Git · Linux · PowerShell · Markdown · Office · Aegisub · VSCode Extension API</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="honors" class="section" aria-labelledby="honors-title">
+        <div class="section-heading">
+          <p class="eyebrow">Experience</p>
+          <h2 id="honors-title">荣誉与活动</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span>2025</span>
+            <p>哈尔滨第九届亚洲冬季运动会语言服务志愿者。</p>
+          </div>
+          <div class="timeline-item">
+            <span>2024</span>
+            <p>参与项目入选第十七届全国大学生创新年会。</p>
+          </div>
+          <div class="timeline-item">
+            <span>HIT</span>
+            <p>“学习卓越之星”、单项人民奖学金、校团委优秀学生“实学实干奖”。</p>
+          </div>
+          <div class="timeline-item">
+            <span>Media</span>
+            <p>哈尔滨工业大学全媒体中心学生助管，参与官方媒体拍摄、视频素材交付、翻译和活动组织。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact" aria-labelledby="contact-title">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">一起交流 AI、软件工程和有意思的系统。</h2>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:18945659789@163.com">18945659789@163.com</a>
+          <a href="https://github.com/salfranio">github.com/salfranio</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Song Zihan</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
