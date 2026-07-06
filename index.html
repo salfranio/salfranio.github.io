@@ -299,40 +299,6 @@
       <a href="#top">Back to top</a>
     </footer>
 
-    <button class="chat-launcher" type="button" aria-controls="chat-panel" aria-expanded="false">问</button>
-    <section id="chat-panel" class="chat-panel" aria-label="Profile Q&A" aria-hidden="true">
-      <div class="chat-header">
-        <div>
-          <span class="label">Ask</span>
-          <h2>Profile Q&A</h2>
-        </div>
-        <div class="chat-actions">
-          <button id="chat-config-toggle" type="button" aria-label="模型配置">⚙</button>
-          <button id="chat-close" type="button" aria-label="关闭问答">×</button>
-        </div>
-      </div>
-      <div id="chat-config" class="chat-config" hidden>
-        <label>
-          <span>API Base URL</span>
-          <input id="chat-base-url" type="url" placeholder="https://your-proxy.example.com/v1" />
-        </label>
-        <label>
-          <span>Model</span>
-          <input id="chat-model" type="text" placeholder="gpt-4o-mini" />
-        </label>
-        <label>
-          <span>API Key</span>
-          <input id="chat-api-key" type="password" placeholder="只保存在当前浏览器" />
-        </label>
-        <button id="chat-save-config" class="button secondary" type="button">保存配置</button>
-      </div>
-      <div id="chat-log" class="chat-log" aria-live="polite"></div>
-      <form id="chat-form" class="chat-form">
-        <input id="chat-input" type="text" autocomplete="off" placeholder="问我项目、技能、GitHub 仓库..." />
-        <button type="submit">发送</button>
-      </form>
-    </section>
-
     <script src="./script.js"></script>
   </body>
 </html>

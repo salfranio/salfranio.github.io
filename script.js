@@ -141,44 +141,12 @@ const featuredProgress = [
   },
 ];
 
-const siteKnowledge = [
-  {
-    keys: ["农业", "大模型", "知识图谱", "schema", "neo4j", "gpt"],
-    answer:
-      "农业大模型评测项目围绕知识图谱构建展开：从明白卡和专家知识抽象 Schema，包含 230 个实体类型、506 个关系类型、555 个属性字段；处理 30M+ 农业语料；用 GPT-4o 两阶段抽取实体和三元组，并在 Neo4j 中导入 3,275 个实体节点和 13,055 条语义关系。",
-  },
-  {
-    keys: ["openvla", "vla", "自动驾驶", "bev", "action", "drive", "lightbevqformer"],
-    answer:
-      "OpenVLA for Drive 当前聚焦 action branch：BEV features -> LightBEVQFormer -> action classifier -> 12-class driving action。已完成训练脚本、评估脚本和 baseline/weighted CE/label smoothing/warmup 等策略对比；阶段性候选结果为 Exact Accuracy 62.13%、Macro F1 29.43%、Blended Score 69.48%，下一步推进 rich_text 场景语义融合。",
-  },
-  {
-    keys: ["古建筑", "graphrag", "qwen", "历史建筑", "向量", "多模态"],
-    answer:
-      "古建筑 GraphRAG 项目把历史建筑文本、表格和图片资料组织为知识网络。流程包括句子补全与指代消解、规则 + 大模型混合关系抽取、关系标签规范化/别名归并/needs_review 标记。当前覆盖 153 栋建筑和 671 条关系/属性记录，并探索图片向量检索与自然语言查询。",
-  },
-  {
-    keys: ["github", "仓库", "项目", "repo", "swstruct", "代码"],
-    answer:
-      "这个页面的 GitHub Lab 会读取 @salfranio 的公开仓库并生成项目卡片。当前公开仓库里 SWStruct-Lab2 是计算层与数据层架构实验，包含 Nginx、ShardingSphere-JDBC、MySQL、Redis、Docker Compose 和 Maven/Java 实践。",
-  },
-  {
-    keys: ["技能", "技术栈", "python", "java", "typescript", "pytorch"],
-    answer:
-      "主要技术栈包括 Python、C/C++、Java、TypeScript、SQL、LaTeX；AI/ML 方向包括 PyTorch、TensorFlow、LLM Prompting、Fine-tuning、CLIP、BEVFormer、VLA、GraphRAG；系统方向包括 Redis、MySQL、ShardingSphere-JDBC、Nginx、Docker、Maven 和 Neo4j。",
-  },
-  {
-    keys: ["联系", "邮箱", "email"],
-    answer: "可以通过 18945659789@163.com 联系，也可以访问 GitHub：github.com/salfranio。",
-  },
-];
-
 let githubRepos = [];
 
 const repoCopy = {
   "SWStruct-Lab2": "计算层与数据层架构实验，覆盖 Nginx 负载均衡、ShardingSphere-JDBC 分库分表、Redis 缓存、Docker Compose 和 Maven/Java 实践。",
   salfranio: "GitHub Profile README 仓库，维护中英文个人介绍、项目经历、技术栈和联系方式。",
-  "salfranio.github.io": "个人 GitHub Pages 站点，包含动态作品集、项目进度驾驶舱、公开仓库浏览和全局 Profile Q&A。",
+  "salfranio.github.io": "个人 GitHub Pages 站点，包含动态作品集、项目进度驾驶舱和公开仓库浏览。",
   "2023111471-SongZihan-AI4SE": "智能软件工程代码审查课程实验，包含数据集构建、Merge Prediction、CodeBERT/CodeT5、LLM 代码审查和 VSCode 插件。",
 };
 
@@ -281,136 +249,6 @@ const loadRepos = async () => {
 renderProgress();
 loadRepos();
 repoSearch?.addEventListener("input", filterRepos);
-
-const chatLauncher = document.querySelector(".chat-launcher");
-const chatPanel = document.querySelector("#chat-panel");
-const chatClose = document.querySelector("#chat-close");
-const chatLog = document.querySelector("#chat-log");
-const chatForm = document.querySelector("#chat-form");
-const chatInput = document.querySelector("#chat-input");
-const chatConfigToggle = document.querySelector("#chat-config-toggle");
-const chatConfig = document.querySelector("#chat-config");
-const chatSaveConfig = document.querySelector("#chat-save-config");
-const chatBaseUrl = document.querySelector("#chat-base-url");
-const chatModel = document.querySelector("#chat-model");
-const chatApiKey = document.querySelector("#chat-api-key");
-
-const configKeys = {
-  baseUrl: "salfranio.chat.baseUrl",
-  model: "salfranio.chat.model",
-  apiKey: "salfranio.chat.apiKey",
-};
-
-const appendMessage = (role, content) => {
-  if (!chatLog) return;
-  const message = document.createElement("div");
-  message.className = `chat-message ${role}`;
-  message.textContent = content;
-  chatLog.appendChild(message);
-  chatLog.scrollTop = chatLog.scrollHeight;
-};
-
-const openChat = () => {
-  chatPanel?.classList.add("is-open");
-  chatPanel?.setAttribute("aria-hidden", "false");
-  chatLauncher?.setAttribute("aria-expanded", "true");
-  if (chatLog && !chatLog.children.length) {
-    appendMessage("assistant", "你好，我可以基于这个主页和 GitHub 公开仓库回答项目、技能、进度和联系方式相关问题。");
-  }
-  window.setTimeout(() => chatInput?.focus(), 120);
-};
-
-const closeChat = () => {
-  chatPanel?.classList.remove("is-open");
-  chatPanel?.setAttribute("aria-hidden", "true");
-  chatLauncher?.setAttribute("aria-expanded", "false");
-};
-
-const localAnswer = (question) => {
-  const normalized = question.toLowerCase();
-  const match = siteKnowledge.find((item) => item.keys.some((key) => normalized.includes(key.toLowerCase())));
-  if (match) return match.answer;
-
-  const repoMatch = githubRepos.find((repo) => normalized.includes(repo.name.toLowerCase()));
-  if (repoMatch) {
-    return `${repoMatch.name}：${repoDescription(repoMatch)}\n语言：${repoMatch.language || "Mixed"}\n地址：${repoMatch.html_url}`;
-  }
-
-  const projectList = featuredProgress.map((item) => `- ${item.name}：${item.status}，进度 ${item.progress}%`).join("\n");
-  return `我目前能回答主页资料和公开 GitHub 信息。你可以问农业知识图谱、OpenVLA for Drive、古建筑 GraphRAG、SWStruct-Lab2、技术栈或联系方式。\n\n重点项目：\n${projectList}`;
-};
-
-const llmAnswer = async (question) => {
-  const baseUrl = localStorage.getItem(configKeys.baseUrl)?.replace(/\/$/, "");
-  const model = localStorage.getItem(configKeys.model) || "gpt-4o-mini";
-  const apiKey = localStorage.getItem(configKeys.apiKey);
-  if (!baseUrl || !apiKey) return null;
-
-  const context = [
-    "你是宋梓晗个人主页上的问答助手。回答要简洁、真实，不要编造未给出的训练结果或私有信息。",
-    "个人：哈尔滨工业大学软件工程本科生，2027 届。",
-    ...siteKnowledge.map((item) => item.answer),
-    `公开仓库：${githubRepos.map((repo) => `${repo.name}(${repo.language || "Mixed"}): ${repoDescription(repo)}`).join("; ")}`,
-  ].join("\n");
-
-  const response = await fetch(`${baseUrl}/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model,
-      messages: [
-        { role: "system", content: context },
-        { role: "user", content: question },
-      ],
-      temperature: 0.3,
-    }),
-  });
-  if (!response.ok) throw new Error(`LLM API ${response.status}`);
-  const data = await response.json();
-  return data.choices?.[0]?.message?.content?.trim() || null;
-};
-
-chatLauncher?.addEventListener("click", () => {
-  if (chatPanel?.classList.contains("is-open")) closeChat();
-  else openChat();
-});
-
-chatClose?.addEventListener("click", closeChat);
-
-chatConfigToggle?.addEventListener("click", () => {
-  if (!chatConfig) return;
-  chatConfig.hidden = !chatConfig.hidden;
-});
-
-chatSaveConfig?.addEventListener("click", () => {
-  localStorage.setItem(configKeys.baseUrl, chatBaseUrl?.value.trim() || "");
-  localStorage.setItem(configKeys.model, chatModel?.value.trim() || "");
-  localStorage.setItem(configKeys.apiKey, chatApiKey?.value.trim() || "");
-  appendMessage("assistant", "模型配置已保存在当前浏览器。");
-});
-
-if (chatBaseUrl) chatBaseUrl.value = localStorage.getItem(configKeys.baseUrl) || "";
-if (chatModel) chatModel.value = localStorage.getItem(configKeys.model) || "";
-if (chatApiKey) chatApiKey.value = localStorage.getItem(configKeys.apiKey) || "";
-
-chatForm?.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const question = chatInput?.value.trim();
-  if (!question) return;
-  chatInput.value = "";
-  appendMessage("user", question);
-  appendMessage("assistant", "思考中...");
-  const pending = chatLog?.lastElementChild;
-  try {
-    const answer = (await llmAnswer(question)) || localAnswer(question);
-    if (pending) pending.textContent = answer;
-  } catch (error) {
-    if (pending) pending.textContent = `${localAnswer(question)}\n\n模型接口暂时不可用，已使用本地资料回答。`;
-  }
-});
 
 const canvas = document.querySelector("#knowledge-canvas");
 const ctx = canvas?.getContext("2d");
