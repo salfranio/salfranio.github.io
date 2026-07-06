@@ -440,6 +440,165 @@ h1 {
   font-size: 12px;
 }
 
+.lab-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.36fr) minmax(0, 1fr);
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.progress-panel,
+.repo-panel {
+  background: var(--white);
+}
+
+.progress-panel {
+  padding: 28px;
+}
+
+.panel-heading h3 {
+  margin-bottom: 24px;
+  font-size: 24px;
+}
+
+.progress-list {
+  display: grid;
+  gap: 18px;
+}
+
+.progress-card {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.progress-card:last-child {
+  border-bottom: 0;
+}
+
+.progress-card h4 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.progress-card p {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.progress-bar {
+  height: 5px;
+  background: rgba(23, 32, 27, 0.1);
+}
+
+.progress-bar span {
+  display: block;
+  width: var(--progress);
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--gold), var(--red));
+}
+
+.repo-panel {
+  min-width: 0;
+}
+
+.repo-toolbar {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+  padding: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.search-box,
+.chat-config label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.search-box input,
+.chat-config input,
+.chat-form input {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0 12px;
+  color: var(--ink);
+  background: var(--paper);
+  font: inherit;
+}
+
+.repo-status {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.repo-card {
+  display: grid;
+  align-content: space-between;
+  min-height: 220px;
+  padding: 24px;
+  background: var(--white);
+}
+
+.repo-card h3 {
+  margin-bottom: 10px;
+  font-size: 21px;
+  overflow-wrap: anywhere;
+}
+
+.repo-card p {
+  color: #3c4641;
+  font-size: 14px;
+}
+
+.repo-meta,
+.repo-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.repo-meta span,
+.repo-links a {
+  padding: 5px 8px;
+  border: 1px solid rgba(33, 72, 59, 0.18);
+  color: var(--green);
+  background: rgba(33, 72, 59, 0.05);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.repo-links a:hover {
+  color: var(--blue);
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -601,6 +760,133 @@ h1 {
   font-size: 14px;
 }
 
+.chat-launcher {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 30;
+  width: 54px;
+  height: 54px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--ink);
+  box-shadow: var(--shadow);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.chat-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 88px;
+  z-index: 31;
+  display: grid;
+  grid-template-rows: auto auto minmax(220px, 1fr) auto;
+  width: min(420px, calc(100vw - 32px));
+  max-height: min(680px, calc(100vh - 120px));
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transform: translateY(18px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.chat-panel.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.chat-header h2 {
+  margin-bottom: 0;
+  font-size: 22px;
+}
+
+.chat-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-actions button,
+.chat-form button {
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.chat-actions button {
+  width: 34px;
+  height: 34px;
+}
+
+.chat-config {
+  display: grid;
+  gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.chat-log {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: 220px;
+  padding: 18px;
+  overflow: auto;
+}
+
+.chat-message {
+  max-width: 92%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: #344039;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.chat-message.user {
+  justify-self: end;
+  color: var(--white);
+  background: var(--green);
+}
+
+.chat-message.assistant {
+  justify-self: start;
+}
+
+.chat-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 76px;
+  gap: 8px;
+  padding: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.chat-form button {
+  background: var(--ink);
+  color: var(--white);
+}
+
 @media (max-width: 860px) {
   .site-header {
     align-items: flex-start;
@@ -643,11 +929,17 @@ h1 {
   .intro,
   .section-heading,
   .split,
-  .contact {
+  .contact,
+  .lab-layout,
+  .repo-toolbar {
     grid-template-columns: 1fr;
   }
 
   .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .repo-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -701,6 +993,16 @@ h1 {
 
   .footer {
     flex-direction: column;
+  }
+
+  .chat-launcher {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .chat-panel {
+    right: 16px;
+    bottom: 82px;
   }
 }
 
