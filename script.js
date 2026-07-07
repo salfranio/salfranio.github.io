@@ -46,7 +46,7 @@ const revealObserver = new IntersectionObserver(
 
 revealTargets.forEach((target) => revealObserver.observe(target));
 
-const topics = ["知识图谱", "GraphRAG", "AI4SE", "VLA 动作决策", "多模态检索", "中间件架构"];
+const topics = ["知识图谱构建", "GraphRAG 检索", "AI4SE 工具", "VLA 动作分支", "多模态匹配", "系统架构实验"];
 const topicRotator = document.querySelector("#topic-rotator");
 let topicIndex = 0;
 
